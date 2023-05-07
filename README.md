@@ -12,7 +12,10 @@ python3 webservice.py
 
 ## Run the webservice with Docker
 ```bash
-python3 webservice.py
+docker buildx build . -t model-service
+```
+```bash
+docker run -it -p 8080:8080 model-service
 ```
 
 ## Test the webservice with Curl
