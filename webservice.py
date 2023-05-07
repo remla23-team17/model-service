@@ -12,8 +12,9 @@ def predict():
     preprocessed_input = preprocessor.load_single(input_line)
     prediction = model.predict(preprocessed_input)
 
-    output = f"'{input_line}' is predicted as {prediction[0]}"
-    return output, 200
+    return {
+        "prediction": prediction[0].item()
+    }
 
 
 if __name__ == '__main__':
