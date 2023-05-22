@@ -15,10 +15,10 @@ python3 webservice.py
 docker buildx build . -t model-service
 ```
 ```bash
-docker run -it -p 8080:8080 model-service
+docker run -it -p 80:80 model-service
 ```
 
 ## Test the webservice with Curl
 ```bash
-curl -X POST http://localhost:8080/predict -H "Content-Type: application/json" -d '{"input": "The selection on the menu was great and so were the prices."}' 
+curl -X POST http://localhost/predict -H "Content-Type: application/json" -d '{"input": "The selection on the menu was great and so were the prices."}' 
 ```

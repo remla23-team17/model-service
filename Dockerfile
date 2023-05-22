@@ -1,20 +1,22 @@
-# Use Python 3.9 image
+# Dockerfile for model-service
 FROM python:3.9
 
-# Define work dir
+LABEL "maintainer"="remla23-team17"
+
+USER root
+
+ENV EXPOSE_PORT=80
+
+EXPOSE $EXPOSE_PORT
+
 WORKDIR /root
 
-# Copy necessary files to work dir
 COPY requirements.txt .
+RUN pip install -r requirements.txt
+
 COPY models ./models
 COPY pipeline ./pipeline
 COPY webservice.py .
-
-# Install python dependencies
-RUN pip install -r requirements.txt
-
-# Expose port to outside world
-EXPOSE 8080
 
 # Launch web service
 ENTRYPOINT ["python"]
